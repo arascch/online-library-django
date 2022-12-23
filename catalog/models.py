@@ -12,7 +12,7 @@ class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.ForeignKey('Author' , on_delete=models.SET_NULL , null=True)
     summery = models.TextField(max_length=1000 , help_text="enter brief description of the book")
-    isbn = models.CharField('isbn' , max_length=13 , unique=True , help_text=" 13 character <a href="www.isbn-international.org/content/what-isbn"> ISBN Number</a>")
+    isbn = models.CharField('ISBN',max_length=13 , unique=True , help_text='13 character <a href="www.isbn-international.org/content/what-isbn"> ISBN Number</a>')
 
 
     def __str__(self):

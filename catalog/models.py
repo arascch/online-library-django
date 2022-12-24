@@ -15,6 +15,11 @@ class Book(models.Model):
     isbn = models.CharField('ISBN',max_length=13 , unique=True , help_text='13 character <a href="www.isbn-international.org/content/what-isbn"> ISBN Number</a>')
     genre = models.ManyToManyField(Genre , help_text='Select a genre for this book')
 
+    def display_genre(self):
+        return ', '.join(genre.name for genre in self.genre.all()[:3])
+
+    display_genre.short_description = 'Genre'
+
     def __str__(self):
         return self.title
 

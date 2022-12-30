@@ -21,6 +21,7 @@ def index(request):
 
 class BookListView(generic.ListView):
     model = Book
+    paginate_by = 1
 
     def get_queryset(self):
         return Book.objects.filter(title__icontains='for')[:5]
@@ -31,3 +32,5 @@ class BookDetailView(generic.DetailView):
     def book_detail_view(requset , primary_key):
         book = get_object_or_404(Book , pk=primary_key)
         return render(requset , 'catalog/book_detail.html' , context={'book':book})
+
+

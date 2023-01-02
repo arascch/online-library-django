@@ -1,6 +1,7 @@
 from django.urls import include , path
 from . import views
 
+#Url pattern for Catalog app
 urlpatterns = [
     path('' , views.index, name='index'),
     path('books/' , views.BookListView.as_view() , name = 'books'),

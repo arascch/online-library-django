@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Book , Author , BookInstance , Genre
 from django.views import generic
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
 
 #view for home page
 def index(request):
@@ -33,6 +34,7 @@ class BookListView(generic.ListView):
         return Book.objects.filter(title__icontains='for')[:5]
 
 #class for detail view
+@login_required
 class BookDetailView(generic.DetailView):
     model = Book
 

@@ -34,7 +34,6 @@ class BookListView(generic.ListView):
         return Book.objects.filter(title__icontains='for')[:5]
 
 #class for detail view
-@login_required
 class BookDetailView(generic.DetailView):
     model = Book
 

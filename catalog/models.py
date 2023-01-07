@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 import uuid
 from django.contrib.auth.models import User
+from datetime import date
 
 class Genre(models.Model):
     name = models.CharField(max_length=200 , help_text="enter your book genre")
@@ -48,7 +49,9 @@ class BookInstance(models.Model):
         default='m',
         help_text='Book availability',
     )
-
+    @property
+    def is_overdue(self):
+        return bool(self.due_back and date.today() > self.due_back)
     class meta:
         ordering = ['due_back']
 

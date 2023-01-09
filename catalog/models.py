@@ -54,6 +54,7 @@ class BookInstance(models.Model):
         return bool(self.due_back and date.today() > self.due_back)
     class meta:
         ordering = ['due_back']
+        permissions = (("can_mark_returned", "set book as returned"),)
 
     def __str__(self):
         return f'{self.id} ({self.book.title})'

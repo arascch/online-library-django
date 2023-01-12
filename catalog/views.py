@@ -54,6 +54,7 @@ class LoanedBooksByUserListView(LoginRequiredMixin , generic.ListView):
     def get_queryset(self):
         return BookInstance.objects.filter(borrower=self.request.user).filter(status__exact='o').order_by('due_back')
 
+#add function for renew book from library
 def renew_book_librarian(request , pk):
     book_instance = get_object_or_404(BookInstance , pk=pk)
     if request.method=='POST':
